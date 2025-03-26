@@ -9,9 +9,92 @@
 
 </head>
 <body>
+     <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-car"></i> 
+                <h1> MAGARI BORA HUB</h1>
+            </div>
+     <p>Get the most reliable and well maintained cars of any price range</p>
+     <button id="theme" class="theme">
+        <i class="fas fa-moon"></i>
+        <p>Dark mode</p>   
+     </button>
+        </header>
+<main>
+    <aside class="filters">
+      <h2>Filter cars</h2>
+      <div class="filter-group">
+          <label for="search">Search</label>
+          <input type="text" id="search" placeholder="search by make eg.Audi">
+      </div>
+      <div class="filter-group">
+         <label for="make-filter">Make</label>
+         <select  id="make-filter">
+            <option value="">Audi</option>
+            <option value="">Porsche</option>
+            <option value="">Mercedes</option>
+            <option value="">Toyota</option>
+            <option value="">Nissan</option>
+            <option value="">Volkswagon</option>
+         </select>
+      </div>
+      <div class="filter-group">
+        <label for="min-price">Min Price ($)</label>
+        <input type="number" id="min-price" min="0" step="1000">
+      </div>
+      
+      <div class="filter-group">
+        <label for="max-price">Max Price ($)</label>
+        <input type="number" id="max-price" min="0" step="1000">
+      </div>
+      <div class="filter-group">
+      <label for="sort-by">Sort accordng to:</label>
+      <select id="sort-by">
+        <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="year-desc">Year: Newest</option>
+            <option value="year-asc">Year: Oldest</option>
+      </select>
+      </div>
+
+      <button id="apply-filters" class="btn primary-btn">Apply Filter</button>
+      <button id="reset-filters" class="btn secondary-btn">Reset</button>
+    </aside>
+    <div class="content">
+        <div  id="featured-car" class="featured-car">
+          <!--  Featured car will be displayed here -->
+        </div>
+        <h2>Available cars</h2>
+        <div id="cars-grid" class="cars-grid">
+            <!-- The car cards will be displayed here --> 
+      </div>
+      <div id="loading" class="loading-indicator">
+          <div class="spinner"></div>
+          <p>Loading cars..</p>
+        </div>
+        
+        <div id="no-results" class="no-results hidden">
+          <i class="fas fa-search"></i>
+          <p>No cars match your search criteria.</p>
+          <p>Try adjusting your filters or search </p>
+        </div>
+      </div>
+
+    </div>
+</main> 
+<footer>
+    <p>Made with <i class="fa-solid fa-heart"></i>Magari Bora &copy: 2025 <br>
+    
+    </p>
+</footer>  
+<div id="car-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+</div>
    
-    <h1> <i class="fa-solid fa-car"></i>MAGARI BORA HUB</h1>
-    <h2>Get the most reliable and well maintained cars of any price range</h2>
   
 <script src="index.js"></script>    
 </body>
