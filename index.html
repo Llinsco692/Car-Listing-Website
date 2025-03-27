@@ -3,97 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A car listing Website</title>
+    <title>AutoMarket - Car Listings</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 </head>
 <body>
-     <div class="container">
-        <header>
-            <div class="logo">
-                <i class="fa-solid fa-car"></i> 
-                <h1> MAGARI BORA HUB</h1>
-            </div>
-     <p>Get the most reliable and well maintained cars of any price range</p>
-     <button id="theme" class="theme">
-        <i class="fas fa-moon"></i>
-        <p>Dark mode</p>   
-     </button>
-        </header>
-<main>
-    <aside class="filters">
-      <h2>Filter cars</h2>
-      <div class="filter-group">
-          <label for="search">Search</label>
-          <input type="text" id="search" placeholder="search by make eg.Audi">
-      </div>
-      <div class="filter-group">
-         <label for="make-filter">Make</label>
-         <select  id="make-filter">
-            <option value="">Audi</option>
-            <option value="">Porsche</option>
-            <option value="">Mercedes</option>
-            <option value="">Toyota</option>
-            <option value="">Nissan</option>
-            <option value="">Volkswagon</option>
-         </select>
-      </div>
-      <div class="filter-group">
-        <label for="min-price">Min Price ($)</label>
-        <input type="number" id="min-price" min="0" step="1000">
-      </div>
-      
-      <div class="filter-group">
-        <label for="max-price">Max Price ($)</label>
-        <input type="number" id="max-price" min="0" step="1000">
-      </div>
-      <div class="filter-group">
-      <label for="sort-by">Sort accordng to:</label>
-      <select id="sort-by">
-        <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="year-desc">Year: Newest</option>
-            <option value="year-asc">Year: Oldest</option>
-      </select>
-      </div>
+    <header>
+        <h1>🚗 MAGARI BORA HUB</h1>
+        <p>Complete Vehicle Specifications & Features</p>
+        <button id="darkModeToggle">🌙 Dark Mode</button>
 
-      <button id="apply-filters" class="btn primary-btn">Apply Filter</button>
-      <button id="reset-filters" class="btn secondary-btn">Reset</button>
-    </aside>
-    <div class="content">
-        <div  id="featured-car" class="featured-car">
-          <!--  Featured car will be displayed here -->
-        </div>
-        <h2>Available cars</h2>
-        <div id="cars-grid" class="cars-grid">
-            <!-- The car cards will be displayed here --> 
-      </div>
-      <div id="loading" class="loading-indicator">
-          <div class="spinner"></div>
-          <p>Loading cars..</p>
-        </div>
+    </header>
+
+    <div class="currency-selector">
+        <label for="currency">Select Currency:</label>
+        <select id="currency">
+            <option value="USD">US Dollar (USD)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">British Pound (GBP)</option>
+            <option value="JPY">Japanese Yen (JPY)</option>
+            <option value="CAD">Canadian Dollar (CAD)</option>
+            <option value="AUD">Australian Dollar (AUD)</option>
+            <option value="CHF">Swiss Franc (CHF)</option>
+            <option value="CNY">Chinese Yuan (CNY)</option>
+            <option value="SEK">Swedish Krona (SEK)</option>
+            <option value="NZD">New Zealand Dollar (NZD)</option>
+            <option value="MXN">Mexican Peso (MXN)</option>
+            <option value="SGD">Singapore Dollar (SGD)</option>
+            <option value="HKD">Hong Kong Dollar (HKD)</option>
+            <option value="NOK">Norwegian Krone (NOK)</option>
+            <option value="KRW">South Korean Won (KRW)</option>
+            <option value="INR">Indian Rupee (INR)</option>
+            <option value="RUB">Russian Ruble (RUB)</option>
+            <option value="BRL">Brazilian Real (BRL)</option>
+            <option value="ZAR">South African Rand (ZAR)</option>
+            <option value="TRY">Turkish Lira (TRY)</option>
+            <option value="IDR">Indonesian Rupiah (IDR)</option>
+            <option value="MYR">Malaysian Ringgit (MYR)</option>
+            <option value="THB">Thai Baht (THB)</option>
+            <option value="PHP">Philippine Peso (PHP)</option>
+            <option value="AED">United Arab Emirates Dirham (AED)</option>
+            <option value="SAR">Saudi Riyal (SAR)</option>
+            <option value="EGP">Egyptian Pound (EGP)</option>
+            <option value="ILS">Israeli New Shekel (ILS)</option>
+            <option value="DKK">Danish Krone (DKK)</option>
+            <option value="PLN">Polish Zloty (PLN)</option>
+            <option value="HUF">Hungarian Forint (HUF)</option>
+            <option value="CZK">Czech Koruna (CZK)</option>
+            <option value="RON">Romanian Leu (RON)</option>
+            <option value="BGN">Bulgarian Lev (BGN)</option>
+            <option value="CLP">Chilean Peso (CLP)</option>
+            <option value="COP">Colombian Peso (COP)</option>
+            <option value="PEN">Peruvian Nuevo Sol (PEN)</option>
+            <option value="ARS">Argentine Peso (ARS)</option>
+            <option value="VND">Vietnamese Dong (VND)</option>
+            <option value="PKR">Pakistani Rupee (PKR)</option>
+            <option value="KES">Kenyan Shilling (KES)</option>
+            <option value="NGN">Nigerian Naira (NGN)</option>
+            <option value="UGX">Ugandan Shilling (UGX)</option>
+            <option value="BHD">Bahraini Dinar (BHD)</option>
+            <option value="KWD">Kuwaiti Dinar (KWD)</option>
+            <option value="OMR">Omani Rial (OMR)</option>
+            <option value="QAR">Qatari Rial (QAR)</option>
+            <option value="JOD">Jordanian Dinar (JOD)</option>
+            <option value="KWD">Kuwaiti Dinar (KWD)</option>
+            <option value="BBD">Barbadian Dollar (BBD)</option>
+            <option value="BSD">Bahamian Dollar (BSD)</option>
+            <option value="CUP">Cuban Peso (CUP)</option>
+            <option value="GHS">Ghanaian Cedi (GHS)</option>
+            <option value="RWF">Rwandan Franc (RWF)</option>
+            <option value="LSL">Lesotho Loti (LSL)</option>
+            <option value="TND">Tunisian Dinar (TND)</option>
+            <option value="TWD">New Taiwan Dollar (TWD)</option>
+            <option value="KZT">Kazakhstani Tenge (KZT)</option>
+            <option value="LKR">Sri Lankan Rupee (LKR)</option>
+            <option value="MMK">Myanmar Kyat (MMK)</option>
+            <option value="LKR">Sri Lankan Rupee (LKR)</option>
+            <option value="BDT">Bangladeshi Taka (BDT)</option>
+            <option value="JMD">Jamaican Dollar (JMD)</option>
+            <option value="MAD">Moroccan Dirham (MAD)</option>
+            <option value="BND">Brunei Dollar (BND)</option>
+            <option value="MNT">Mongolian Tugrik (MNT)</option>
+            <option value="MOP">Macanese Pataca (MOP)</option>
+            <option value="MVR">Maldivian Rufiyaa (MVR)</option>
+            <option value="AFN">Afghan Afghani (AFN)</option>
+            <option value="NPR">Nepalese Rupee (NPR)</option>
+            <option value="SOS">Somali Shilling (SOS)</option>
+            <option value="ZMK">Zambian Kwacha (ZMK)</option>
+            <option value="TZS">Tanzanian Shilling (TZS)</option>
+            <option value="BWP">Botswana Pula (BWP)</option>
+            <option value="SBD">Solomon Islands Dollar (SBD)</option>
+            <option value="TOP">Tongan Paʻanga (TOP)</option>
+            <option value="VUV">Vanuatu Vatu (VUV)</option>
+            <option value="MGA">Malagasy Ariary (MGA)</option>
+            <option value="MWK">Malawian Kwacha (MWK)</option>
+            <option value="CVE">Cape Verde Escudo (CVE)</option>
+            <option value="MRU">Mauritanian Ouguiya (MRU)</option>
+            <option value="MWK">Malawian Kwacha (MWK)</option>
+            <option value="PYG">Paraguayan Guarani (PYG)</option>
+            <option value="INR">Indian Rupee (INR)</option>
+            <option value="GTQ">Guatemalan Quetzal (GTQ)</option>
+            <option value="HTG">Haitian Gourde (HTG)</option>
+            <option value="BAM">Bosnia and Herzegovina Convertible Mark (BAM)</option>
+            <option value="MKD">Macedonian Denar (MKD)</option>
+            <option value="ALL">Albanian Lek (ALL)</option>
+            <option value="XOF">West African CFA Franc (XOF)</option>
+            <option value="KMF">Comorian Franc (KMF)</option>
+            <option value="DJF">Djiboutian Franc (DJF)</option>
+            <option value="GNF">Guinean Franc (GNF)</option>
+            <option value="FJD">Fijian Dollar (FJD)</option>
+            <option value="SLL">Sierra Leonean Leone (SLL)</option>
+            <option value="MWK">Malawian Kwacha (MWK)</option>
+            <option value="AFN">Afghan Afghani (AFN)</option>
+            <option value="TZS">Tanzanian Shilling (TZS)</option>
+            <option value="SYP">Syrian Pound (SYP)</option>
+            <option value="IRR">Iranian Rial (IRR)</option>
+            <option value="KHR">Cambodian Riel (KHR)</option>
+            <option value="MMK">Myanmar Kyat (MMK)</option>
+            <option value="LAK">Laotian Kip (LAK)</option>
+            <option value="FJD">Fijian Dollar (FJD)</option>
+        </select>
         
-        <div id="no-results" class="no-results hidden">
-          <i class="fas fa-search"></i>
-          <p>No cars match your search criteria.</p>
-          <p>Try adjusting your filters or search </p>
-        </div>
-      </div>
+    </div>
 
-    </div>
-</main> 
-<footer>
-    <p>Made with<i class="fa-solid fa-heart" style="color: red;"></i>
-        Magari Bora &copy: 2025
-    </p>
-</footer>  
-<div id="car-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <div id="modal-body"></div>
-    </div>
-</div>
-<script src="index.js"></script>    
+    <div class="cars-container" id="carsContainer"></div>
+
+    <script src="index.js">
+    </script>
 </body>
 </html>
