@@ -219,7 +219,7 @@ body.dark-mode .feature-badge:hover {
     background: var(--highlight);
 }
 
-/* Spec Items - Specs Grid */
+
 .specs-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -251,7 +251,7 @@ body.dark-mode .spec-item:hover {
     box-shadow: 0 4px 8px var(--shadow-light);
 }
 
-/* Spec Item Icons */
+
 .spec-icon {
     width: 24px;
     height: 24px;
