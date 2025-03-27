@@ -1,14 +1,15 @@
 
-        // Exchange Rates API
-        const EXCHANGE_API = 'https://v6.exchangerate-api.com/v6/218cecb211e1bc44a6c74a6c/latest/USD';
-         //darl-mode
-         // Dark Mode Toggle Functionality
+// Exchange Rates API
+const EXCHANGE_API = 'https://v6.exchangerate-api.com/v6/218cecb211e1bc44a6c74a6c/latest/USD';
+
+// Dark Mode Toggle Functionality
 const darkModeButton = document.getElementById('darkModeToggle');
 darkModeButton.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
 });
+//cars object
 
-        const cars = [
+ const cars = [
             { 
                 make: "Toyota", 
                 model: "Camry", 
@@ -272,7 +273,7 @@ darkModeButton.addEventListener('click', () => {
             });
         }
         
-        // The function to fetch exchange rates and calculate price in different currencies
+        // Function to fetch exchange rates and calculate price in different currencies
         let exchangeRates = null;
 
         async function getExchangeRates() {
@@ -285,7 +286,7 @@ darkModeButton.addEventListener('click', () => {
             }
         }
 
-        // Updated convertPrice function to maintain consistency
+        // Updated convertionPrice function to maintain consistency
         function convertPrice(price, currency) {
             if (!exchangeRates) return price;
             const convertedPrice = price * exchangeRates[currency];
