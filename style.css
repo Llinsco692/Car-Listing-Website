@@ -1,14 +1,14 @@
 :root {
-    --primary: #2c3e50; /* Dark Blue */
-    --secondary: #3498db; /* Vibrant Blue */
-    --accent: #e74c3c; /* Bright Red */
-    --light: #ecf0f1; /* Light Gray */
-    --dark: #34495e; /* Dark Gray */
-    --bg-color: #f5f7fa; /* Soft Background */
-    --highlight: #f39c12; /* Warm Gold */
+    --primary: #2c3e50; 
+    --secondary: #3498db; 
+    --accent: #e74c3c; 
+    --light: #ecf0f1; 
+    --dark: #34495e; 
+    --bg-color: #f5f7fa; 
+    --highlight: #f39c12; 
     --shadow-light: rgba(0,0,0,0.1);
     --shadow-dark: rgba(0,0,0,0.2);
-    --dark-bg-color: #121212; /* Dark Background */
+    --dark-bg-color: #121212; 
     --dark-text-color: #ffffff;
 }
 
@@ -295,30 +295,27 @@ body.dark-mode .spec-item:hover {
     background-color: var(--highlight);
 }
 
-/* Dark Mode Price */
+
 body.dark-mode .car-price {
     color: var(--highlight);
 }
 
-/* Dark Mode Feature Badge */
 body.dark-mode .feature-badge {
     background: var(--primary);
 }
-/* Dark Mode Currency Selector */
+
 body.dark-mode .currency-selector {
     background: #333;
     color: var(--light);
     box-shadow: 0 2px 5px var(--shadow-dark);
 }
 
-/* Dark Mode Select Dropdown */
 body.dark-mode #currency {
     background: #444;
     color: var(--light);
     border-color: var(--secondary);
 }
 
-/* Dark Mode Car Cards */
 body.dark-mode .car-card {
     background: #222;
     color: var(--light);
@@ -333,83 +330,78 @@ body.dark-mode .car-card:hover {
 body.dark-mode .car-info {
     background: #333;
 }
-/* Styling for Search Bar */
-#searchBar {
-    position: fixed; /* Keeps the search bar fixed on the right side */
-    top: 80px; /* Adds space below the top of the page */
-    right: 20px; /* Aligns it to the right side of the page */
-    width: 250px; /* Sets the width of the search bar */
-    padding: 12px 20px; /* Padding for a comfortable typing area */
-    border: 2px solid #0077cc; /* Blue border for the search bar */
-    border-radius: 30px; /* Rounded corners for a soft look */
-    outline: none;
-    font-size: 16px;
-    background-color: #f5f5f5; /* Light gray background */
-    color: #333; /* Dark text for readability */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Light shadow for subtle depth */
-    transition: all 0.3s ease; /* Smooth transition when focusing */
-}
 
-/* Focused State for Search Bar */
+#searchBar {
+    position: fixed; 
+    top: 80px; 
+    right: 20px; 
+    width: 250px; 
+    padding: 12px 20px; 
+    border: 2px solid #0077cc; 
+    border-radius: 30px; 
+    font-size: 16px;
+    background-color: #f5f5f5; 
+    color: #333; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    transition: all 0.3s ease; 
+}
 #searchBar:focus {
-    border-color: #0077cc; /* Change the border color when focused */
-    box-shadow: 0 0 8px rgba(0, 119, 204, 0.6); /* Subtle glow effect */
+    border-color: #0077cc; 
+    box-shadow: 0 0 8px rgba(0, 119, 204, 0.6); 
 }
 
 /* Styling for Search Button */
 #search-btn {
-    position: fixed; /* Keeps the button fixed on the right side */
-    top: 150px; /* Adds space below the search bar */
-    right: 20px; /* Aligns the button to the right side */
-    padding: 12px 20px; /* Padding for the button */
-    background-color: #0077cc; /* Blue background */
-    color: white; /* White text color */
+    position: fixed;
+    top: 150px; 
+    right: 20px; 
+    padding: 12px 20px; 
+    background-color: #0077cc; 
+    color: white;
     border: none;
-    border-radius: 30px; /* Rounded corners for a soft button look */
-    font-size: 16px;
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
+    border-radius: 30px; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
 }
 
-/* Hover Effect for Search Button */
+
 #search-btn:hover {
-    background-color: #005fa3; /* Darker blue when hovered */
-    transform: scale(1.05); /* Slightly enlarge the button */
+    background-color: #005fa3;
+    transform: scale(1.05); 
 }
 
-/* Active State for Search Button */
+
 #search-btn:active {
-    background-color: #004b8d; /* Even darker blue when clicked */
-    transform: scale(0.98); /* Slightly shrink the button when clicked */
+    background-color: #004b8d; 
+    transform: scale(0.98); 
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 600px) {
     #searchBar {
-        width: 80%; /* Makes the search bar responsive on smaller screens */
+        width: 80%;
     }
 
     #search-btn {
-        width: 80%; /* Makes the button responsive on smaller screens */
-        margin-top: 10px; /* Adds space between search bar and button */
+        width: 80%;
+        margin-top: 10px; 
     }
 }
 
 
 
 .car-form-container {
-    position: fixed; /* Keeps it fixed on the side */
-    top: 20px; /* Add some space from the top */
-    left: 0; /* Stick to the left side of the screen */
-    width: 300px; /* Width of the sidebar */
+    position: fixed; 
+    top: 20px; 
+    left: 0; 
+    width: 300px; 
     padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 10;
-    height: 70%; /* Makes the sidebar full height */
-    overflow-y: auto; /* Allows scrolling if content overflows */
-    box-sizing: border-box; 
+    height: 70%; 
+    overflow-y: auto; 
 }
 
 /* Form styles */
