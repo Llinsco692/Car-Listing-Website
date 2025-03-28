@@ -2,11 +2,12 @@
 // Exchange Rates API
 const EXCHANGE_API = 'https://v6.exchangerate-api.com/v6/218cecb211e1bc44a6c74a6c/latest/USD';
 
-// Dark Mode Toggle Functionality
+         // Dark Mode Toggle Functionality
 const darkModeButton = document.getElementById('darkModeToggle');
 darkModeButton.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
 });
+
 //cars object
 
  const cars = [
@@ -261,32 +262,27 @@ darkModeButton.addEventListener('click', () => {
             
             
         ];
-         
-        function priceInThousands(price, currency) {
-            if (!exchangeRates) return price;
-            const convertedPrice = price * exchangeRates[currency];
-            
-            // Format with commas and 2 decimal places for all currencies
-            return convertedPrice.toLocaleString('en-US', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            });
-        }
         
-        // Function to fetch exchange rates and calculate price in different currencies
-        let exchangeRates = null;
-
+        
         async function getExchangeRates() {
             try {
-                const response = await fetch(EXCHANGE_API);
+                const response = await fetch(EXCHANGE_API); // Replace with actual API endpoint
                 const data = await response.json();
                 exchangeRates = data.conversion_rates;
             } catch (error) {
                 console.error('Error fetching exchange rates:', error);
             }
         }
-
-        // Updated convertionPrice function to maintain consistency
+        
+        function priceInThousands(price, currency) {
+            if (!exchangeRates) return price;
+            const convertedPrice = price * exchangeRates[currency];
+            return convertedPrice.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+        
         function convertPrice(price, currency) {
             if (!exchangeRates) return price;
             const convertedPrice = price * exchangeRates[currency];
@@ -295,7 +291,7 @@ darkModeButton.addEventListener('click', () => {
                 maximumFractionDigits: 2
             });
         }
-
+        
         function createCarCard(car, currency) {
             const convertedPrice = priceInThousands(car.price, currency);
             return `
@@ -322,7 +318,48 @@ darkModeButton.addEventListener('click', () => {
                 </div>
             `;
         }
+        
+        function displayCars(filteredCars, currency) {
+            const carsContainer = document.getElementById('carsContainer');
+            carsContainer.innerHTML = ''; // Clear previous car cards
+            
+            filteredCars.forEach(car => {
+                const carCard = createCarCard(car, currency); // Create car cards
+                carsContainer.innerHTML += carCard;
+            });
+        }
+        // Add form submission handler
+document.getElementById('car-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form values
+    const newCar = {
+        id: cars.length + 1,
+        make: document.getElementById('make').value.trim(),
+        model: document.getElementById('model').value.trim(),
+        year: parseInt(document.getElementById('year').value),
+        price: parseFloat(document.getElementById('price').value),
+        engine: document.getElementById('engine').value.trim(),
+        transmission: document.getElementById('transmission').value.trim(),
+        drivetrain: document.getElementById('drivetrain').value.trim(),
+        features: document.getElementById('features').value.split(',').map(f => f.trim()),
+        image: document.getElementById('image').value.trim(),
+        mileage: "N/A",  // Default value since not in form
+        color: "N/A"     // Default value since not in form
+    };
 
+    // Add to cars array
+    cars.push(newCar);
+
+    // Create and append new car card
+    const currency = document.getElementById('currency').value;
+    const carsContainer = document.getElementById('carsContainer');
+    carsContainer.insertAdjacentHTML('afterbegin', createCarCard(newCar, currency));
+
+    // Reset form
+    this.reset();
+});
+        
         function updatePrices(currency) {
             const carCards = document.querySelectorAll('.car-card');
             carCards.forEach((card, index) => {
@@ -331,21 +368,49 @@ darkModeButton.addEventListener('click', () => {
                 priceElement.textContent = `${currency} ${convertedPrice}`;
             });
         }
-
+        
+        document.getElementById('search-btn').addEventListener('click', function() {
+            const query = document.getElementById('searchBar').value.toLowerCase(); // Get the value from search input
+            const filteredCars = cars.filter(car => 
+                car.model.toLowerCase().includes(query) || car.make.toLowerCase().includes(query)
+            ); // Filter based on model or make
+            const currency = document.getElementById('currency').value; // Get current selected currency
+            displayCars(filteredCars, currency); // Display filtered cars with updated currency
+        });
+        
+        document.getElementById('searchBar').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            if (query === '') {
+                const currency = document.getElementById('currency').value; // Get current selected currency
+                displayCars(cars, currency); // Display all cars if the search bar is empty
+            } else {
+                const makes = [...new Set(cars.map(car => car.make.toLowerCase()))]; // Get unique makes
+                const matchingMakes = makes.filter(make => make.includes(query));
+        
+                if (matchingMakes.length === 1) { 
+                    // If a unique make is found, filter cars by that make
+                    const make = matchingMakes[0];
+                    const carsByMake = cars.filter(car => car.make.toLowerCase() === make);
+                    displayCars(carsByMake, 'USD'); // Display cars by make
+                } else {
+                    const filteredCars = cars.filter(car => 
+                        car.model.toLowerCase().includes(query) || car.make.toLowerCase().includes(query)
+                    );
+                    displayCars(filteredCars, 'USD'); // Display cars filtered by make or model
+                }
+            }
+        });
+        
+        document.getElementById('currency').addEventListener('change', (e) => {
+            const currency = e.target.value; // Get the selected currency
+            updatePrices(currency); // Update the prices of all car cards
+        });
+        
         async function initialize() {
-            await getExchangeRates();
-            
-            const carsContainer = document.getElementById('carsContainer');
-            carsContainer.innerHTML = cars.map(car => 
-                createCarCard(car, 'USD')).join('');
-            
-            document.getElementById('currency').addEventListener('change', (e) => {
-                updatePrices(e.target.value);
-            });
+            await getExchangeRates(); // Fetch exchange rates
+        
+            const currency = document.getElementById('currency').value || 'USD'; // Default to USD
+            displayCars(cars, currency); // Initially display all cars with default currency
         }
-
+        
         initialize();
-        
-
-      
-        
